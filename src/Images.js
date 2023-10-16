@@ -5,9 +5,11 @@ function Images() {
   const [images, setImages] = useState(null);
   const [value, setValue] = useState(null);
   const [imageList, setimageList] = useState([]);
+  const [isloading, setIsloading] = useState(false);
 
   const getImages = async () => {
     try {
+      setIsloading(true);
       const options = {
         method: "POST",
         body: JSON.stringify({
@@ -34,6 +36,7 @@ function Images() {
       const newImages = [...existingData, imageObject];
       setimageList(newImages);
       localStorage.setItem("imageData", JSON.stringify(newImages));
+      setIsloading(false);
     } catch (error) {
       console.error(error);
     }
@@ -70,15 +73,31 @@ function Images() {
         </button>
       </section>
 
-      <section className="img-section">
-        {images?.map((image, index) => (
+      
+        {isloading ? (
+          <div class="d-flex justify-content-center m-5">
+            <div class="spinner-border" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          </div>
+        ) : (<section className="img-section">
+          {images?.map((image, index) => (
+            <img
+              key={index}
+              src={image.url}
+              alt={`Generated image of ${value}`}
+            />
+          ))}
+          </section>
+        )}
+        {/* {images?.map((image, index) => (
           <img
             key={index}
             src={image.url}
             alt={`Generated image of ${value}`}
           />
-        ))}
-      </section>
+        ))} */}
+      
     </div>
   );
 }

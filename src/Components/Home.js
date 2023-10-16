@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 function Home() {
   return (
     <div className="landing">
-      <div class="container px-2 py-4 my-1">
+      <div class="container px-2 py-4 my-5">
         <div class="row p-4 pb-0 pe-lg-0 pt-lg-4 align-items-center rounded-3 border shadow-lg">
           <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
             <h1 class="display-4 fw-bold lh-1 text-body-emphasis">
@@ -43,7 +43,7 @@ function Home() {
           </div>
         </div>
       </div>
-      <div class="container px-4 py-5" id="featured-3">
+      <div class="container px-4 py-5 mt-5" id="featured-3">
         <h2 class="pb-2 border-bottom">Details of our Project</h2>
         <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
           <div class="feature col">
